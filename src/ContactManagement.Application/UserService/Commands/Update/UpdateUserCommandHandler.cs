@@ -23,8 +23,7 @@ namespace ContactManagement.Application.UserService.Commands.Update
             var updatedUser = new User(
                 request.Id,
                 request.Name,
-                request.Email,
-                request.Password
+                request.Email
             );
 
             

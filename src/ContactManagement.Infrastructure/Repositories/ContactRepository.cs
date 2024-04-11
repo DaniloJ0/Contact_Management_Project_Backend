@@ -13,10 +13,18 @@ namespace ContactManagement.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task AddAsync(Contact contact)
+        public async Task<bool> AddAsync(Contact contact)
         {
             await _context.Contacts.AddAsync(contact);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<Contact> GetByIdAsync(ContactId id)
@@ -29,20 +37,39 @@ namespace ContactManagement.Infrastructure.Repositories
             return await _context.Contacts.ToListAsync();
         }
 
-        public async Task UpdateAsync(Contact contact)
+        public async Task<bool> UpdateAsync(Contact contact)
         {
             _context.Contacts.Update(contact);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
 
-        public async Task DeleteAsync(ContactId id)
+        public async Task<bool> DeleteAsync(ContactId id)
         {
             var contact = await GetByIdAsync(id);
             if (contact != null)
             {
                 _context.Contacts.Remove(contact);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
+            return false;
         }
 
         public async Task<List<Contact>?> GetByUserIdAsync(UserId id) => 

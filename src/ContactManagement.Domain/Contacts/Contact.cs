@@ -22,7 +22,7 @@ namespace ContactManagement.Domain.Contacts
         public string PhoneNumber { get; set;}
         public string Address { get; set;}
         public string Company { get; set;}
-        public string Note { get; }
+        public string Note { get; set; }
         public UserId UserId { get; set; } 
         public User User { get; set; }
 

@@ -3,12 +3,12 @@ using MediatR;
 
 namespace ContactManagement.Application.UserService.Queries.GetUsers
 {
-    public class GetUSerQueryHandler : IRequestHandler<GetUserQuery, List<UserQuery>>
+    public class GetUserQueryHandler : IRequestHandler<GetUserQuery, List<UserQuery>>
     {
 
         private readonly IUserRepository _userRepository;
 
-        public GetUSerQueryHandler(IUserRepository userRepository)
+        public GetUserQueryHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }

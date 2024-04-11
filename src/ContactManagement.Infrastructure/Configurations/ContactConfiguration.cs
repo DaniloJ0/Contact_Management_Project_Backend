@@ -20,6 +20,8 @@ namespace ContactManagement.Infrastructure.Configurations
             builder.Property(c => c.Address).HasMaxLength(50);
             builder.Property(c => c.Company).HasMaxLength(25);
             builder.Property(c => c.Note).HasMaxLength(150);
+            builder.Property(c => c.UserId).HasMaxLength(150).IsRequired();
+
         }
     }
 }

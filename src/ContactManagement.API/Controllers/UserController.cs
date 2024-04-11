@@ -1,4 +1,6 @@
 using ContactManagement.Application.UserService.Commands.CreateUser;
+using ContactManagement.Application.UserService.Commands.DeleteUser;
+using ContactManagement.Application.UserService.Commands.Update;
 using ContactManagement.Application.UserService.Queries.GetUserById;
 using ContactManagement.Application.UserService.Queries.GetUsers;
 using ContactManagement.Domain.Users;
@@ -18,7 +20,7 @@ namespace ContactManagement.API.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        [HttpGet("GetAllUsers")]
+        [HttpGet("GetUsers")]
         public async Task<ActionResult> GetAllUsers()
         {
             var users = await _mediator.Send(new GetUserQuery());
@@ -38,7 +40,20 @@ namespace ContactManagement.API.Controllers
             var user = await _mediator.Send(command);
             return Ok(user);
         }
-        
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteUser([FromBody] UserId id)
+        {
+            var user = await _mediator.Send(new DeleteUserCommand { Id = id });
+            return Ok(user);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateUser([FromBody] UpdateUserCommand command)
+        {
+            var user = await _mediator.Send(command);
+            return Ok(user);
+        }
         
     }
 }

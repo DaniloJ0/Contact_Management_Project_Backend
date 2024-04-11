@@ -5,6 +5,6 @@ namespace ContactManagement.Application.UserService.Commands.DeleteUser
 {
     public class DeleteUserCommand : IRequest<bool>
     {
-        public UserId Id { get; }
+        public UserId Id { get; set; }
     }
 }

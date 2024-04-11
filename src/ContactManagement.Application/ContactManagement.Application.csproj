@@ -11,13 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ContactService\Commands\AddContact\" />
-    <Folder Include="ContactService\Commands\DeleteContact\" />
-    <Folder Include="ContactService\Commands\UpdateContact\" />
-    <Folder Include="ContactService\Queries\GetContactById\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />

@@ -18,8 +18,7 @@ namespace ContactManagement.Application.UserService.Commands.CreateUser
             var createdUser = new User(
                 new UserId(Guid.NewGuid()) 
                 ,request.Name,
-                request.Email,
-                request.Password
+                request.Email
                 );
 
             await _userRepository.AddAsync(createdUser);
