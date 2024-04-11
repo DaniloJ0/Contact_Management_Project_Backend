@@ -5,13 +5,13 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BAC54D09-D7DA-4C3C-9213-A3FE108A1BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.Domain", "ContactManagement.Domain\ContactManagement.Domain.csproj", "{52D4F9C9-3825-49FD-9742-14DBC5903D33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.Domain", "src\ContactManagement.Domain\ContactManagement.Domain.csproj", "{52D4F9C9-3825-49FD-9742-14DBC5903D33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.Application", "ContactManagement.Application\ContactManagement.Application.csproj", "{2204371E-1A95-48EE-B645-F6106F6A5A3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.Application", "src\ContactManagement.Application\ContactManagement.Application.csproj", "{2204371E-1A95-48EE-B645-F6106F6A5A3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.Infrastructure", "ContactManagement.Infrastructure\ContactManagement.Infrastructure.csproj", "{A4710108-1113-417D-A9D7-40A3485B6992}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.Infrastructure", "src\ContactManagement.Infrastructure\ContactManagement.Infrastructure.csproj", "{A4710108-1113-417D-A9D7-40A3485B6992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.API", "ContactManagement.API\ContactManagement.API.csproj", "{6945610F-0770-4070-9FD9-1F50D74562AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagement.API", "src\ContactManagement.API\ContactManagement.API.csproj", "{6945610F-0770-4070-9FD9-1F50D74562AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

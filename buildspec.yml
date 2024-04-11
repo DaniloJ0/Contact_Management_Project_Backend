@@ -1,0 +1,47 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel STS
+  pre_build:
+    commands:
+      - echo Restore started on `date`
+ 
+      - dotnet restore ./Contact_Management_Project_Backend.sln
+ 
+      - dotnet restore ./src/ContactManagement.Domain/ContactManagement.Domain.csproj
+      - dotnet restore ./src/ContactManagement.Application/ContactManagement.Application.csproj
+      - dotnet restore ./src/ContactManagement.Infrastructure/ContactManagement.Infrastructure.csproj
+      - dotnet restore ./src/ContactManagement.API/ContactManagement.API.csproj
+     
+  build:
+    commands:
+      - echo Build started on `date`
+ 
+      - dotnet build ./Contact_Management_Project_Backend.sln
+ 
+     - dotnet build ./src/ContactManagement.Domain/ContactManagement.Domain.csproj
+      - dotnet build ./src/ContactManagement.Application/ContactManagement.Application.csproj
+      - dotnet build ./src/ContactManagement.Infrastructure/ContactManagement.Infrastructure.csproj
+      - dotnet build ./src/ContactManagement.API/ContactManagement.API.csproj
+     
+  post_build:
+    commands:
+      - echo Build completed on `date`
+ 
+      - dotnet publish -c Release -r linux-x64 -o ./build_output ./src/ContactManagement.Domain/ContactManagement.Domain.csproj --self-contained false
+      - dotnet publish -c Release -r linux-x64 -o ./build_output ./src/ContactManagement.Application/ContactManagement.Application.csproj --self-contained false
+      - dotnet publish -c Release -r linux-x64 -o ./build_output ./src/ContactManagement.Infrastructure/ContactManagement.Infrastructure.csproj --self-contained false
+      - dotnet publish -c Release -r linux-x64 -o ./build_output ./src/ContactManagement.API/ContactManagement.API.csproj --self-contained false
+ 
+artifacts:
+  files:
+    - '**/*'
+  base-directory: ./build_output
+  discard-paths: no
+reports:  
+    Contact_Management_Project_Backend:
+        file-format: VisualStudioTrx
+        files:
+            - '**/*'
+        base-directory: './testresults'
