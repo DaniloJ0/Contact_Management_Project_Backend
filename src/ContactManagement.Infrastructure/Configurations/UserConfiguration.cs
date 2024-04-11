@@ -14,9 +14,9 @@ namespace ContactManagement.Infrastructure.Configurations
             userId => userId.Value,
                 value => new UserId(value));
 
-            builder.Property(u => u.Name).HasMaxLength(50);
-            builder.Property(u => u.Password).HasMaxLength(50);
-            builder.Property(u => u.Email).HasMaxLength(50);
+            builder.Property(u => u.Name).HasMaxLength(50).IsRequired();
+            builder.Property(u => u.Email).HasMaxLength(50).IsRequired();
+            builder.Property(u => u.Password).HasMaxLength(50).IsRequired();
         }
     }
 }

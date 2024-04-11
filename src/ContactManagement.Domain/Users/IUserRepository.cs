@@ -4,9 +4,9 @@
     {
         Task<List<User>> GetAllAsync();
         Task<User> GetByIdAsync(UserId id);
-        Task AddAsync(User user);
-        Task UpdateAsync(User user);
-        Task DeleteAsync(UserId idUser);
+        Task<bool> AddAsync(User user);
+        Task<bool> UpdateAsync(User user);
+        Task<bool> DeleteAsync(UserId idUser);
 
     }
 }
