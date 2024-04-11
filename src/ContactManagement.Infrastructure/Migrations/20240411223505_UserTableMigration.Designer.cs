@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContactManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240411213715_UserTableMigration")]
+    [Migration("20240411223505_UserTableMigration")]
     partial class UserTableMigration
     {
         /// <inheritdoc />
@@ -61,6 +61,7 @@ namespace ContactManagement.Infrastructure.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<Guid>("UserId")
+                        .HasMaxLength(150)
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");

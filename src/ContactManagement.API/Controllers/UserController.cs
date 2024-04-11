@@ -1,9 +1,11 @@
+using ContactManagement.Application.ContactService.Commands.CreateContact;
 using ContactManagement.Application.UserService.Commands.CreateUser;
 using ContactManagement.Application.UserService.Commands.DeleteUser;
 using ContactManagement.Application.UserService.Commands.Update;
 using ContactManagement.Application.UserService.Queries.GetUserById;
 using ContactManagement.Application.UserService.Queries.GetUsers;
 using ContactManagement.Domain.Users;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +16,12 @@ namespace ContactManagement.API.Controllers
     public class UserController : ControllerBase
     {
        private readonly ISender _mediator;
+        private readonly IValidator<CreateUserCommand> _validator;
 
-        public UserController(ISender mediator)
+        public UserController(ISender mediator, IValidator<CreateUserCommand> validator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _validator = validator;
         }
 
         [HttpGet("GetUsers")]
@@ -37,6 +41,12 @@ namespace ContactManagement.API.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateUser([FromBody] CreateUserCommand command)
         {
+            var validationResult = _validator.Validate(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             var user = await _mediator.Send(command);
             return Ok(user);
         }

@@ -1,4 +1,5 @@
-﻿using ContactManagement.Application.UserService.Commands.CreateUser;
+﻿using ContactManagement.Application.ContactService.Commands.CreateContact;
+using ContactManagement.Application.UserService.Commands.CreateUser;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -11,6 +12,7 @@ namespace ContactManagement.Application
         {
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
+            services.AddValidatorsFromAssemblyContaining<CreateContactCommandValidator>();
             services.AddMediatR(ctg =>
             ctg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 

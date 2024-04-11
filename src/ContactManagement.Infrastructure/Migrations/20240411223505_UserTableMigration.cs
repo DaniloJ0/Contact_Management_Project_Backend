@@ -35,7 +35,7 @@ namespace ContactManagement.Infrastructure.Migrations
                     Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Company = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Note = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", maxLength: 150, nullable: false)
                 },
                 constraints: table =>
                 {

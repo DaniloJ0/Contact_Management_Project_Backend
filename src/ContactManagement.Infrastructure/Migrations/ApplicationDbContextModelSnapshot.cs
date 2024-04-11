@@ -58,6 +58,7 @@ namespace ContactManagement.Infrastructure.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<Guid>("UserId")
+                        .HasMaxLength(150)
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");

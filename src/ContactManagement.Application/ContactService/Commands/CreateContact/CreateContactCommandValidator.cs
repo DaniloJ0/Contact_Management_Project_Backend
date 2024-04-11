@@ -13,7 +13,8 @@ namespace ContactManagement.Application.ContactService.Commands.CreateContact
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Email is required.")
                 .MaximumLength(50).WithMessage("Email must not exceed 50 characters.")
-                .EmailAddress().WithMessage("A valid email is required.");
+                .EmailAddress().WithMessage("A valid email is required.")
+                .Matches(@"^\S+@\S+$").WithMessage("A valid email is required.");
 
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("Phone is required.")
