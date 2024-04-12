@@ -31,10 +31,10 @@ namespace ContactManagement.API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("GetById")]
-        public async Task<ActionResult> GetUserById([FromBody] UserId id)
+        [HttpGet("GetById/{id}")]
+        public async Task<ActionResult> GetUserById(string id)
         {
-            var user = await _mediator.Send(new GetUserByIdQuery { Id = id });
+            var user = await _mediator.Send(new GetUserByIdQuery { Id = new UserId(Guid.Parse(id))});
             return Ok(user);
         }
 

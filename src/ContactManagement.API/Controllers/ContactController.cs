@@ -3,7 +3,9 @@ using ContactManagement.Application.ContactService.Commands.DeleteContact;
 using ContactManagement.Application.ContactService.Commands.Update;
 using ContactManagement.Application.ContactService.Queries.GetContactById;
 using ContactManagement.Application.ContactService.Queries.GetContacts;
+using ContactManagement.Application.ContactService.Queries.GetContactsByUserId;
 using ContactManagement.Domain.Contacts;
+using ContactManagement.Domain.Users;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -30,10 +32,17 @@ namespace ContactManagement.API.Controllers
             return Ok(contacts);
         }
 
-        [HttpGet("GetById")]
-        public async Task<ActionResult> GetContactById([FromBody] ContactId id)
+        [HttpGet("GetById/{id}")]
+        public async Task<ActionResult> GetContactById(string id)
         {
-            var contact = await _mediator.Send(new GetContactByIdQuery { Id = id });
+            var contact = await _mediator.Send(new GetContactByIdQuery { Id = new ContactId(Guid.Parse(id)) });
+            return Ok(contact);
+        }
+
+        [HttpGet("GetByUserId/{id}")]
+        public async Task<ActionResult> GetContactByUserId(string id)
+        {
+            var contact = await _mediator.Send(new GetContactsByUserIdQuery { Id = new UserId(Guid.Parse(id)) });
             return Ok(contact);
         }
 

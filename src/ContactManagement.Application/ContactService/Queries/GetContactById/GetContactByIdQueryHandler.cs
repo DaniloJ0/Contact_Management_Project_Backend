@@ -1,6 +1,9 @@
 ﻿using ContactManagement.Application.ContactService.Queries.GetContacts;
 using ContactManagement.Domain.Contacts;
+using ContactManagement.Domain.Users;
 using MediatR;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Net;
 
 namespace ContactManagement.Application.ContactService.Queries.GetContactById
 {
@@ -22,7 +25,12 @@ namespace ContactManagement.Application.ContactService.Queries.GetContactById
                 Id = ContactRequest.Id,
                 Name = ContactRequest.Name,
                 Email = ContactRequest.Email,
-            };
+                PhoneNumber = ContactRequest.PhoneNumber,
+                Address =ContactRequest.Address,
+                Company =ContactRequest.Company,
+                Note =ContactRequest.Note,
+                UserId =ContactRequest.UserId
+        };
 
             return Contact;
         }
